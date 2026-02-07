@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon></ApplicationIcon>
+    <StartupObject>PianoApp.App</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- NAudio for audio playback with WASAPI support -->
+    <PackageReference Include="NAudio" Version="2.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 
+    Piano sample packs - copy to output directory.
+    The default sample pack is in Samples/ folder.
+    Additional sample packs can be added as subfolders in Samples/
+    Format: Samples/{PackName}/*.wav or Samples/*.wav for default
+    Each pack must contain WAV files named: A0.wav, A#0.wav, B0.wav, C1.wav, ... C8.wav
+    -->
+    <Content Include="Samples\**\*.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

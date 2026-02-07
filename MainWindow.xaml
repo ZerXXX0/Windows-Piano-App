@@ -1,0 +1,109 @@
+<Window x:Class="PianoApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="clr-namespace:PianoApp.UI"
+        Title="Piano - Keyboard Piano" 
+        Height="350" 
+        Width="1300"
+        MinWidth="800"
+        MinHeight="300"
+        Background="#FF1E1E1E"
+        WindowStartupLocation="CenterScreen"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        PreviewKeyUp="Window_PreviewKeyUp"
+        Deactivated="Window_Deactivated"
+        Closing="Window_Closing">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Header with status info -->
+        <Border Grid.Row="0" Background="#FF333333" Padding="15,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Title and instructions -->
+                <StackPanel Grid.Column="0" Orientation="Vertical">
+                    <TextBlock Text="Keyboard Piano" 
+                               FontSize="20" 
+                               FontWeight="Bold" 
+                               Foreground="#FFFFFFFF"/>
+                    <TextBlock Text="Use keyboard to play • Shift = Sharp • Space = Sustain • [ ] = Transpose" 
+                               FontSize="11" 
+                               Foreground="#FFAAAAAA"
+                               Margin="0,2,0,0"/>
+                </StackPanel>
+                
+                <!-- Sample Pack Selector -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="20,0">
+                    <TextBlock Text="Sample Pack: " 
+                               Foreground="#FFCCCCCC" 
+                               VerticalAlignment="Center"
+                               FontSize="12"/>
+                    <ComboBox x:Name="SamplePackCombo"
+                              MinWidth="120"
+                              VerticalAlignment="Center"
+                              SelectionChanged="SamplePackCombo_SelectionChanged"/>
+                </StackPanel>
+                
+                <!-- Transpose display -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="20,0">
+                    <TextBlock Text="Transpose: " 
+                               Foreground="#FFCCCCCC" 
+                               VerticalAlignment="Center"
+                               FontSize="14"/>
+                    <TextBlock x:Name="TransposeText" 
+                               Text="0" 
+                               Foreground="#FF4CAF50" 
+                               FontWeight="Bold"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               MinWidth="40"
+                               TextAlignment="Center"/>
+                </StackPanel>
+                
+                <!-- Sustain indicator -->
+                <Border Grid.Column="3" 
+                        x:Name="SustainIndicator"
+                        Background="#FF555555" 
+                        CornerRadius="4" 
+                        Padding="12,6"
+                        Margin="10,0,0,0">
+                    <TextBlock x:Name="SustainText" 
+                               Text="SUSTAIN OFF" 
+                               Foreground="#FFAAAAAA"
+                               FontWeight="Bold"
+                               FontSize="12"/>
+                </Border>
+            </Grid>
+        </Border>
+        
+        <!-- Piano visualization -->
+        <ScrollViewer Grid.Row="1" 
+                      HorizontalScrollBarVisibility="Auto" 
+                      VerticalScrollBarVisibility="Disabled"
+                      Padding="10">
+            <ui:PianoVisualization x:Name="PianoView" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+        </ScrollViewer>
+        
+        <!-- Footer with keyboard mapping hint -->
+        <Border Grid.Row="2" Background="#FF2A2A2A" Padding="15,8">
+            <TextBlock x:Name="StatusText"
+                       Text="Ready" 
+                       Foreground="#FF888888"
+                       FontSize="11"
+                       HorizontalAlignment="Center"/>
+        </Border>
+    </Grid>
+</Window>

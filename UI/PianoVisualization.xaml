@@ -1,0 +1,11 @@
+<UserControl x:Class="PianoApp.UI.PianoVisualization"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Height="200">
+    
+    <!-- Canvas for rendering piano keys -->
+    <Canvas x:Name="PianoCanvas" 
+            Background="#FF2D2D2D"
+            ClipToBounds="True"/>
+    
+</UserControl>
