@@ -39,7 +39,7 @@ A Windows desktop piano application playable entirely via the computer keyboard,
 
 ## Download & Installation
 
-1. Download the release package from [Windows Piano App](https://drive.google.com/file/d/1WWljNVaUaBcLC3oFZKuhZP2_aqEyDj-s/view?usp=sharing)
+1. Download the release package from this repository
 2. Extract to any folder
 3. Run `PianoApp.exe`
 
